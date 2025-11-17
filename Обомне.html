@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональный сайт Данг Тхи Хань Линь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --pink-primary: #ff69b4;
+            --pink-secondary: #ff1493;
+            --pink-light: #fff5f7;
+            --pink-lighter: #ffe4ec;
+        }
+
+        body {
+            background-color: var(--pink-light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin: 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-bottom: 3px solid white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        h1 {
+            color: var(--pink-secondary);
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            color: var(--pink-primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            background-color: var(--pink-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--pink-primary);
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: var(--pink-light);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: var(--pink-lighter);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pink-primary), var(--pink-secondary));
+            border-radius: 4px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            background: var(--pink-light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink-primary);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .contact-info h3 {
+            color: var(--pink-primary);
+            margin-bottom: 5px;
+        }
+
+        /* Family Section */
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .family-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--pink-light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .family-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.15);
+        }
+
+        .family-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        .family-info h3 {
+            color: var(--pink-primary);
+            margin-bottom: 8px;
+        }
+
+        .family-role {
+            color: var(--pink-secondary);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            color: var(--pink-primary);
+            border-top: 2px solid var(--pink-lighter);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-link {
+                text-align: center;
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Личный сайт</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Главная</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Обо мне</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
+                <li class="nav-item"><a href="#family" class="nav-link">Семья</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <div class="avatar">👩</div>
+            <h1>Данг Тхи Хань Линь</h1>
+            <p class="tagline">Добро пожаловать на мой персональный сайт</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <div class="section-icon">👤</div>
+                <h2>Обо мне</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Всем привет! Меня зовут Линь, мне 20 лет, я учусь на втором курсе Ульяновского технического университета. Люблю фотографировать, слушать музыку и вообще обожаю узнавать новое.</p>
+                    <p>Я очень активный и творческий человек. В свободное время занимаюсь фотографией, изучаю новые технологии и путешествую. Мечтаю стать профессиональным веб-разработчиком и работать в международной компании.</p>
+                    <p>В будущем хочу развивать свои навыки программирования и дизайна, а также выучить еще несколько иностранных языков.</p>
+                </div>
+                <div class="skills">
+                    <h3>Мои навыки</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Фотография</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Веб-разработка</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Английский язык</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Графический дизайн</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <div class="section-icon">📞</div>
+                <h2>Контактная информация</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>dangkhanhlinh022@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-info">
+                        <h3>Телефон</h3>
+                        <p>+7 991 115 23 68</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🏠</div>
+                    <div class="contact-info">
+                        <h3>Адрес</h3>
+                        <p>Ульяновск, Россия</p>
+                        <p>Ульяновский технический университет</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <div class="contact-info">
+                        <h3>Социальные сети</h3>
+                        <p>Facebook: Dang Linh</p>
+                        <p>Instagram: lalinhxd</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section id="family" class="section">
+            <div class="section-header">
+                <div class="section-icon">👨‍👩‍👧‍👦</div>
+                <h2>Моя семья</h2>
+            </div>
+            <div class="family-grid">
+                <div class="family-card">
+                    <div class="family-avatar">👨</div>
+                    <div class="family-info">
+                        <h3>Папа</h3>
+                        <p class="family-role">Данг Куанг Лой</p>
+                        <p>Инженер-строитель</p>
+                        <p>Опыт работы: 25 лет</p>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-avatar">👩</div>
+                    <div class="family-info">
+                        <h3>Мама</h3>
+                        <p class="family-role">Буй Тхи Там</p>
+                        <p>Учитель</p>
+                        <p>Преподает в школе 20 лет</p>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-avatar">👧</div>
+                    <div class="family-info">
+                        <h3>Старшая сестра</h3>
+                        <p class="family-role">Данг Тхи Тхам</p>
+                        <p>Врач</p>
+                        <p>Работает в больнице 5 лет</p>
+                    </div>
+                </div>
+                <div class="family-card">
+                    <div class="family-avatar">❤️</div>
+                    <div class="family-info">
+                        <h3>Наша семья</h3>
+                        <p class="family-role">Дружная и любящая</p>
+                        <p>Всегда поддерживаем друг друга</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Данг Тхи Хань Линь. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
